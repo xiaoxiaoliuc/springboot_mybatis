@@ -1,5 +1,10 @@
 package liuc.demo.common.json;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
+
 /**
  * code is far away from bug with the animal protecting
  * ┏┓　　　┏┓
@@ -24,9 +29,13 @@ package liuc.demo.common.json;
  * @Date 2018/5/24 22:06
  * @see
  */
-public class Result<T> {
+@ApiModel("返回结果")
+public class Result<T> implements Serializable {
+    @ApiModelProperty("返回code")
     private Integer code;
+    @ApiModelProperty("提示信息")
     private String msg;
+    @ApiModelProperty("具体内容")
     private T data;
 
     public Integer getCode() {

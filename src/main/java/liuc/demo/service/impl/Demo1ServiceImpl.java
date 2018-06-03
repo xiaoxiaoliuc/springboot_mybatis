@@ -10,6 +10,8 @@ import liuc.demo.exception.DemoException;
 import liuc.demo.mapper.Demo1Mapper;
 import liuc.demo.service.Demo1Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,10 +28,20 @@ public class Demo1ServiceImpl extends ServiceImpl<Demo1Mapper, Demo1> implements
     private Demo1Mapper demo1Mapper;
 
     @Override
-    public Result findById(Integer id) {
-
+    @Cacheable(value = "findById" ,key = "'demo1_'+#id")
+    public Result<Demo1> findById(Integer id) {
         if (id == 1) throw new DemoException(DemoEnum.DEMO_ENUM);
+
         Demo1 demo1 = demo1Mapper.selectById(2);
+        System.out.println("没有走缓存");
         return ResultUtil.success(demo1);
+    }
+    @CacheEvict(value = "findById",key = "'demo1_'+#id")
+    public Result deleteById(Integer id){
+        if (id == 1) throw new DemoException(DemoEnum.DEMO_ENUM);
+
+        Integer integer = demo1Mapper.deleteById(2);
+        System.out.println("没有走缓存");
+        return ResultUtil.success(integer);
     }
 }

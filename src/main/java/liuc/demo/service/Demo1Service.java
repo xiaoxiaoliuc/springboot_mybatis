@@ -14,5 +14,6 @@ import liuc.demo.entity.Demo1;
  * @since 2018-05-24
  */
 public interface Demo1Service extends IService<Demo1> {
-    Result findById(Integer id);
+    Result<Demo1> findById(Integer id);
+    Result deleteById(Integer id);
 }

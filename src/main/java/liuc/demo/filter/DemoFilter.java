@@ -32,7 +32,7 @@ import java.util.Map;
  * @Date 2018/5/25 22:39
  * @see
  */
-@WebFilter(filterName = "demo",urlPatterns = "/*")
+//@WebFilter(filterName = "demo",urlPatterns = "/*")
 public class DemoFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

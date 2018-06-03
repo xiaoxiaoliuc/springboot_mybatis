@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @Date 2018/5/22 13:22
  * @see
  */
-@Configuration
+//@Configuration
 public class WebAppConfig implements WebMvcConfigurer {
 
     @Override
