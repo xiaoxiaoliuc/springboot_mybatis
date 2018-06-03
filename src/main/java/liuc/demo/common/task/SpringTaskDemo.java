@@ -40,7 +40,7 @@ public class SpringTaskDemo {
     @Scheduled(cron = "0/5 * * * * *")
     public void scheduled() throws InterruptedException {
         Thread.sleep(3000);
-        System.out.println(111111);
+//        System.out.println(111111);
         logger.info("scheduled 每秒执行一次： {}",LocalDateTime.now()) ;
     }
     @Scheduled(fixedRate = 1000)
