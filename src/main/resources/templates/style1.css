@@ -1,0 +1,28 @@
+body{
+    width:100%;
+    margin-top: 0;
+    margin-left:1px;
+    border:1px solid gray;
+    line-height:150%;
+
+}
+header,footer{
+    text-align: center;
+    color: white;
+    background: grey;
+    margin: 0;
+    padding: 0;
+}
+.left{
+    float:left;
+    width:160px;
+    padding-left: 10px;
+    padding-bottom: inherit;
+    margin-top: -15px;
+}
+.right{
+    margin-top: -21px;
+    margin-left:190px;
+    border-left:1px solid gray;
+    padding:1em;
+}

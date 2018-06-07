@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/js/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript" src="d.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript">
+        $(function () {
+            demo1.HIDE.demo("p"),
+                demo1.DATE.getDate("#demo", "#getDate"),
+                demo1.MOUSE.mouseAbout("#try", "#tryConsole"),
+            demo1.WRITE1.getAndWrite("#write","#writeP");
+            var cxt=$("#myCanvas")[0].getContext("2d");
+            cxt.moveTo(10,10);
+            cxt.lineTo(150,50);
+            cxt.lineTo(10,50);
+            cxt.stroke();
+        });
+
+
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #c3c3c3;">
+    Your browser does not support the canvas element.
+</canvas>
+<p id="getDate"></p>
+<button id="demo" type="button">点我显示时间</button>
+<p>如果你点我，我就会消失。</p>
+<p>继续点我!</p>
+<p>接着点我!</p>
+<hr>
+<input type="text" placeholder="请输入内容" id="write">
+<p id="writeP"></p>
+<div id="try">
+</div>
+<div>
+
+</div>
+
+<div id="tryConsole"></div>
+
+</body>
+
+
+</html>
