@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/js/jquery-2.0.0.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-combined.min.css">
+    <script type="text/javascript" src="Angular.js"></script>
+
+    <style>
+        div{
+            margin: 10px;
+
+        }
+
+    </style>
+</head>
+<body>
+<!--<div ng-app="myApp" ng-controller="myCtrl">-->
+    <!--FirstName:<input type="text" ng-model="firstName" placeholder="firstName">-->
+    <!--<br>-->
+    <!--LastName:<input type="text" ng-model="lastName" placeholder="lastName" >-->
+    <!--<p>-->
+        <!--{{firstName+" "+lastName}}-->
+    <!--</p>-->
+<!--</div>-->
+<!--<div ng-app="" ng-init="person={firstName:'刘',lastName:'成'}">-->
+    <!--{{person.firstName+person.lastName}}-->
+<!--</div>-->
+<!--<div ng-app="" ng-init="array=[1,2,3,5,6,7,8,8]">-->
+    <!--<p ng-repeat="x in array track by $index">-->
+        <!--ssss-->
+        <!--{{x}}-->
+    <!--</p>-->
+<!--</div>-->
+<!--<div ng-app="" ng-init="names=[1,2,3,4]">-->
+    <!--<p>使用 ng-repeat 来循环数组</p>-->
+    <!--<p ng-repeat="x in names">-->
+        <!--{{x}}-->
+    <!--</p>-->
+    <!--<ul>-->
+        <!--<li ng-repeat="x in names">-->
+            <!--{{ x }}-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->
+<!--<div ng-app="bApp">-->
+    <!--<p class="my-demo"></p>-->
+<!--</div>-->
+<form ng-app="" name="myForm">
+    <input  type="email" name="myEmail" ng-model="text" placeholder="请输入邮箱">
+    <span ng-show="myForm.myEmail.$error.email">不是正确邮箱</span>
+    <p>{{!myForm.myEmail.$error.phone}}</p>
+    <p>{{myForm.myEmail.$dirty}}</p>
+    <p>{{myForm.myEmail.$touched }}</p>
+</form>
+
+</body>
+</html>

@@ -23,7 +23,6 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel("Demo信息")
-@EqualsAndHashCode(callSuper = false)
 public class Demo1 extends Model<Demo1> implements Serializable{
     private static final long serialVersionUID = 1L;
     @TableId(value = "id", type = IdType.AUTO)

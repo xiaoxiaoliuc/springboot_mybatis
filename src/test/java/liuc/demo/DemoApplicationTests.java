@@ -3,6 +3,7 @@ package liuc.demo;
 import cn.hutool.core.lang.Singleton;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
+import liuc.demo.config.redis.MyRedisConfig;
 import liuc.demo.entity.Demo1;
 import liuc.demo.mapper.Demo1Mapper;
 import liuc.demo.service.DemoService;
@@ -10,10 +11,21 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.*;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.mail.MailMessage;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.function.Consumer;
@@ -24,6 +36,66 @@ import java.util.stream.Stream;
 public class DemoApplicationTests {
     @Autowired
     private Demo1Mapper demo1Mapper;
+    @Autowired
+    private RedisTemplate redisTemplate;
+    @Autowired
+    private RedisTemplate<Object, Demo1> demo1RedisTemplate;
+    @Autowired
+    private JavaMailSenderImpl mailSender;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private AmqpAdmin amqpAdmin;
+    @Test
+    public void contextLoad() {
+        Demo1 demo1 = new Demo1();
+        demo1.setA("A");
+        demo1.setRoleId("我是roleId");
+
+        rabbitTemplate.convertAndSend("rabbit1.exchange","demo1.news",demo1);
+//        Object o = rabbitTemplate.receiveAndConvert("aa.news");
+//        System.out.println(o);
+    }
+    @Test
+    public void contextLoad2() {
+//        Exchange exchange = new DirectExchange("rabbit1.exchange");
+//        amqpAdmin.declareExchange(exchange);
+
+//        amqpAdmin.declareQueue(new Queue("demo1.news"));
+        amqpAdmin.declareBinding(new Binding("demo1.news",Binding.DestinationType.QUEUE,"rabbit1.exchange","demo1.news",null));
+    }
+    @Test
+    public void redisTest() {
+//        stringRedisTemplate.opsForValue().append("msg","Hello World");
+        Demo1 demo1 = demo1Mapper.selectById(1);
+        demo1RedisTemplate.opsForValue().set(1, demo1);
+//        Object demo11 = demo1RedisTemplate.opsForValue().get("demo11");
+//        System.out.println(demo11);
+    }
+
+
+    @Test
+    public void sendEmail() {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setSubject("周星星");
+        message.setText("今晚 打老虎");
+        message.setTo("17778045265@163.com");
+        message.setFrom("17611629770@163.com");
+        mailSender.send(message);
+    }
+
+    @Test
+    public void sendEmail2() throws MessagingException {
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+        helper.setSubject("周星星");
+        helper.setText("<h1 style='color: red'>今晚 打老虎</h1>", true);
+        helper.setTo("17778045265@163.com");
+        helper.setFrom("17611629770@163.com");
+        mailSender.send(mimeMessage);
+    }
 
     @Test
     public void contextLoads() {

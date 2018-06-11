@@ -1,6 +1,7 @@
 package liuc.demo;
 
 import com.spring4all.swagger.EnableSwagger2Doc;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -16,6 +17,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 @EnableSwagger2Doc
 @EnableCaching
 @EnableAsync
+@EnableRabbit
 @EnableScheduling
 public class DemoApplication {
 

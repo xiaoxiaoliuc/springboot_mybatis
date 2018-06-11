@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/js/jquery-2.0.0.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-combined.min.css">
+    <script src="Angular-day2.js"></script>
+    <style>
+        div{
+            margin-left: 23%;
+
+        }
+
+    </style>
+</head>
+<body  >
+<div ng-app="App"  >
+    <div ng-controller="Ctrl">
+        {{$root.a2  }}
+        {{a2 | lowercase}}
+    </div>
+    <div ng-controller="Ctrl2">
+        <input type="number" ng-model="num"><br>
+        <input type="number" ng-model="price"><br>
+        总价：{{total | currency}}
+    </div>
+    <hr>
+    <div ng-controller="Ctrl3">
+        <input type="text" ng-model="name">
+        <ul>
+            <li ng-repeat="x in citys | filter:name | orderBy:'country'  track by $index  ">
+                {{x}}
+            </li>
+        </ul>
+
+        {{myUrl}}
+    </div>
+    <div ng-controller="Ctrl4">
+        <h1>{{hi}}</h1>
+    </div>
+
+</div>
+</body>
+</html>

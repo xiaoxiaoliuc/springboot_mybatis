@@ -8,24 +8,56 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript">
         $(function () {
-            demo1.HIDE.demo("p"),
+            // demo1.HIDDEN.hiden("p"),
+            demo1.HIDDEN.chickHide(".bu",".bui");
+            demo1.HIDDEN.toggleShow("#panelId",".panel");
                 demo1.DATE.getDate("#demo", "#getDate"),
                 demo1.MOUSE.mouseAbout("#try", "#tryConsole"),
-            demo1.WRITE1.getAndWrite("#write","#writeP");
-            var cxt=$("#myCanvas")[0].getContext("2d");
-            cxt.moveTo(10,10);
-            cxt.lineTo(150,50);
-            cxt.lineTo(10,50);
+                demo1.WRITE1.getAndWrite("#write", "#writeP");
+            var cxt = $("#myCanvas")[0].getContext("2d");
+            cxt.moveTo(10, 10);
+            cxt.lineTo(150, 50);
+            cxt.lineTo(10, 50);
             cxt.stroke();
+            demo1.HIDDEN.fadeout("#d1");
+            demo1.HIDDEN.fadeout("#d2","slow");
+            demo1.HIDDEN.fadeout("#d3",3000);
+            demo1.HIDDEN.animate("#animateId",".animate");
+            $("[class$='a']").click(function () {
+                $(this).css("background-color","red");
+            });
+            $("tr:odd").css("background-color","yellow");
+            $("#action").click(function () {
+                $("#ac").animate({left:'200px'},"slow");
+                $("#ac").animate({width:'200px',height:'200px',opacity:0.7},"slow",function () {
+                    $("#ac p").animate({fontSize:'68px'},"slow")
+                });
+            });
         });
 
 
-
-
-
-
     </script>
+    <style>
+        .d{
 
+            display: inline;
+            margin: 5px;
+
+        }
+        table{
+            width: 500px;
+        }
+        table, th,td {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        th,td{
+            padding-left: 10px;
+        }
+        th{
+            background: #0e90d2;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,20 +66,87 @@
 </canvas>
 <p id="getDate"></p>
 <button id="demo" type="button">点我显示时间</button>
-<p>如果你点我，我就会消失。</p>
-<p>继续点我!</p>
-<p>接着点我!</p>
+<p class="aa">如果你点我，我就会消失。</p>
+<p class="ba">继续点我!</p>
+<p class="cc">接着点我!</p>
 <hr>
+<div style="width:100px;height: 100px;background: red ;padding-left: 10px"  id="d1" class="d"></div>
+<div style="width:100px;height: 100px;background: blue ;padding-left: 10px" id="d2" class="d"></div>
+<div style="width:100px;height: 100px;background: yellow ;padding-left: 10px" id="d3" class="d"></div>
+<hr>
+
 <input type="text" placeholder="请输入内容" id="write">
 <p id="writeP"></p>
-<div id="try">
-</div>
+
+<hr>
+
 <div>
-
+    <h3>中国办事处</h3>
+    <div style="background: grey">
+        <button class="bu" value="隐藏" style="margin: -12px 50%; width: 50px">隐藏</button>
+    <p style="text-align: left" class="bui" >联系人：张先生<br>
+        北三环中路 100 号<br>
+        北京</p>
+    </div>
+    <h3>美国办事处</h3>
+    <div style="background: grey">
+        <button class="bu" value="隐藏" style="margin: -12px 50%; width: 50px">隐藏</button>
+        <p style="text-align: left" class="bui" >联系人：David<br>
+            第五大街 200 号<br>
+            纽约</p>
+    </div>
+</div>
+<hr>
+<div class="panel" style="display: none ;background: grey ;width: 400px;height: 200px;border: 1px solid black">
+    <p>W3School - 领先的 Web 技术教程站点</p>
+    <p>在 W3School，你可以找到你所需要的所有网站建设教程。</p>
+</div>
+<p id="panelId" style="background: grey ;width: 400px;height: 27px;border: 1px solid black;border-top:0px solid black ;margin-top: 0px">请点击这里</p>
+<hr>
+<button id="animateId">开始动画</button>
+<div class="animate" style="width: 100px ;height: 100px ;position: absolute;background: yellow;margin-top: 15px">
+</div>
+<hr>
+<h3 style="text-align: center">JQuery 表格</h3>
+<table style="margin: 0 auto">
+    <thead>
+        <tr>
+            <th style="border: 1px solid black" colspan="2">我是表格</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>5</td>
+        </tr>
+    </tbody>
+</table>
+<p style="color: #dd514c;text-align: right">.....我是尾巴</p>
+<br>
+<hr>
+<button id="action" >开始</button>
+<div style="position: absolute;width: 100px;height: 100px; background: yellow" id="ac">
+    <p style="margin: 36% auto">JQuery</p>
 </div>
 
-<div id="tryConsole"></div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<p>ee</p>
 </body>
 
 

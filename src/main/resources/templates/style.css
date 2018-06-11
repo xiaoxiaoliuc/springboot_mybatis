@@ -7,9 +7,8 @@ p {
 }
 .table1{
     border-collapse: collapse;
-    border: #0e90d2;
+    border:1px solid   #0e90d2;
     margin: 0 auto;
-
 }
 .table1 td{
     vertical-align: bottom;

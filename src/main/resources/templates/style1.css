@@ -10,8 +10,8 @@ header,footer{
     text-align: center;
     color: white;
     background: grey;
-    margin: 0;
     padding: 0;
+    margin-top: -10px;
 }
 .left{
     float:left;
@@ -19,10 +19,26 @@ header,footer{
     padding-left: 10px;
     padding-bottom: inherit;
     margin-top: -15px;
+    margin-bottom: -10px;
 }
 .right{
     margin-top: -21px;
     margin-left:190px;
     border-left:1px solid gray;
     padding:1em;
+}
+
+#img {
+    margin-left: 190px;
+
+    width: 550px;
+}
+#img img{
+    width: 180px;
+    margin: 10px;
+}
+#img div:first-child {
+    padding-left: 1em;
+    margin-left: 0;
+    border-left:1px solid grey ;
 }

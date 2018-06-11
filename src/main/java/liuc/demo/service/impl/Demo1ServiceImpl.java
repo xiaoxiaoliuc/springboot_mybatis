@@ -9,6 +9,7 @@ import liuc.demo.entity.Demo1;
 import liuc.demo.exception.DemoException;
 import liuc.demo.mapper.Demo1Mapper;
 import liuc.demo.service.Demo1Service;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -43,5 +44,10 @@ public class Demo1ServiceImpl extends ServiceImpl<Demo1Mapper, Demo1> implements
         Integer integer = demo1Mapper.deleteById(2);
         System.out.println("没有走缓存");
         return ResultUtil.success(integer);
+    }
+    @RabbitListener(queues = "demo1.news")
+    public void receive(Demo1 demo1){
+        System.out.println("收到消息");
+        System.out.println(demo1);
     }
 }

@@ -20,6 +20,15 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
+  mail:
+    host: smtp.163.com
+    username: 17611629770@163.com
+    password: 2379817864qqq
+  rabbitmq:
+    host: 192.168.132.136
+    port: 5672
+    username: guest
+    password: guest
 
 
 mybatis-plus:
